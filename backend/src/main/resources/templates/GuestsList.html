@@ -16,6 +16,14 @@
 		</div>
 
 		<div class="panel-body">
+			<form class="form-inline" method="POST" th:object="${guest}" th:action:"@{/guests}" style="margin: 20px 0">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Name" required="required" th:field="*{name}" />
+					<input type="number" class="form-control" name="qtyCompanion" placeholder="Quantity Companion" required="required" min="0" th:field="*{qtyCompanion}"/>
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+			</form>
+
 			<table class="table">
 				<thead>
 					<tr>
