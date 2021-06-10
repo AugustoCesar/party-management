@@ -11,14 +11,14 @@ import com.algaworks.party.model.GuestRepository;
 public class GuestsController {
 	
 	@Autowired
-	private GuestRepository guests;
+	private GuestRepository guestsRepository;
 	
 	@GetMapping("/guests")
 	public ModelAndView toList() {
 		
 		ModelAndView modelAndView = new ModelAndView("GuestsList");
 		
-		modelAndView.addObject("guests", guests.findAll());
+		modelAndView.addObject("guests", guestsRepository.findAll());
 		
 		return modelAndView;
 	}
