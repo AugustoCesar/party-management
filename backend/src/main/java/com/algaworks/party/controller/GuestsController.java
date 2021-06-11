@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.algaworks.party.model.Guest;
@@ -15,16 +16,17 @@ import com.algaworks.party.model.GuestRepository;
 public class GuestsController {
 	
 	@Autowired
-	private GuestRepository guestsRepository;
+	private GuestRepository guestRepository;
 	
 	@GetMapping
 	public ModelAndView toList() {
 		
 		ModelAndView modelAndView = new ModelAndView("GuestsList");
 				
-		modelAndView.addObject("guests", guestsRepository.findAll());
+		modelAndView.addObject("guests", guestRepository.findAll());
 		
 		modelAndView.addObject(new Guest());
+		
 		
 		return modelAndView;
 	}
@@ -32,8 +34,8 @@ public class GuestsController {
 	@PostMapping
 	public String save(Guest guest) {
 		
-		this.guestsRepository.save(guest);
-		
+		this.guestRepository.save(guest);
+				
 		return "redirect:/guests";
 	}
 }
